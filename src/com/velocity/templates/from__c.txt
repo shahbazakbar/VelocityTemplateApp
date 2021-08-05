@@ -1,0 +1,33 @@
+#set( $defaultTimeZone = $date.getTimeZone().getTimeZone("America/New_York") )
+#set( $defaultLocale = $date.getLocale() )
+#set( $currentDate = $date.getDate() )
+#set( $ISO8601DateOnly = "yyyy-MM-dd" )
+#set( $ISO8601DateTime = "yyyy-MM-dd'T'HH:flag_mm:ss" )
+#set( $ISO8601DateTimeWithSpace = "yyyy-MM-dd HH:flag_mm:ss" )
+#set( $ISO8601DateTimeWithMillisUTC = "yyyy-MM-dd'T'HH:flag_mm:ss.SSSZ" )
+##Check properties
+#foreach ($Flight_Leg__c in $Flight_Leg__cList)
+##If flight leg equals booked
+#if(${Flight_Leg__c.Status__c}== "Booked")
+##set order
+#set( $est_Departure_Time_EST__c = ${Flight_Leg__c.Est_Departure_Time_EST__c} )
+#if ( $currentDate.compareTo($est_Departure_Time_EST__c) < 0)
+#if($near_Departure_Time_EST__c)
+#if($near_Departure_Time_EST__c.compareTo($est_Departure_Time_EST__c) > 0)
+#set( $from__c = ${Flight_Leg__c.From__c} )
+#set( $near_Departure_Time_EST__c = $est_Departure_Time_EST__c)
+#else
+#set( $from__c = ${Flight_Leg__c.From__c} )
+#set( $near_Departure_Time_EST__c = ${Flight_Leg__c.Est_Departure_Time_EST__c} )
+#end
+#else
+#set( $from__c = ${Flight_Leg__c.From__c} )
+#set( $near_Departure_Time_EST__c = ${Flight_Leg__c.Est_Departure_Time_EST__c} )
+#end
+#end
+#end
+#end
+##OutPut $From__c
+#if($near_Departure_Time_EST__c)
+$from__c
+#end
