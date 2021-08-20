@@ -1,1 +1,1 @@
-"# VelocityTemplateApp" 
+"# VelocityTemplateApp for Marketo"
