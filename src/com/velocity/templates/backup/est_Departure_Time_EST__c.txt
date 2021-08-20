@@ -1,0 +1,20 @@
+##Check properties
+#foreach ($Flight_Leg__c in $Flight_Leg__cList)
+##If flight leg equals booked
+#if(${Flight_Leg__c.Status__c}== "Booked")
+##set order
+#set( $est_Departure_Time_EST__c = ${Flight_Leg__c.Est_Departure_Time_EST__c} )
+#if($near_Departure_Time_EST__c)
+#if($near_Departure_Time_EST__c.compareTo($est_Departure_Time_EST__c) > 0)
+#set( $near_Departure_Time_EST__c = $est_Departure_Time_EST__c)
+#else
+#end
+#else
+#set( $near_Departure_Time_EST__c = ${Flight_Leg__c.Est_Departure_Time_EST__c} )
+#end
+#end
+#end
+##OutPut $Est_Departure_Time_EST__c
+#if($near_Departure_Time_EST__c)
+$near_Departure_Time_EST__c
+#end

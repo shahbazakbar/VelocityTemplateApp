@@ -2,10 +2,10 @@
 #foreach($Flight_Leg__c in $FlightLegsFromEarliest )
 #if(${Flight_Leg__c.Status__c}== "Booked")
 #set( $matchedFlightLeg = $Flight_Leg__c )
-#break
+##break
 #end
 #end
-##OutPut Est_Departure_Time_EST__c
+##OutPut To__c
 #if($matchedFlightLeg)
-$matchedFlightLeg.Est_Departure_Time_EST__c
+$matchedFlightLeg.Est_Arrival_Time_EST__c
 #end

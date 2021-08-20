@@ -5,7 +5,7 @@
 #break
 #end
 #end
-##OutPut Est_Departure_Time_EST__c
+##OutPut Est_Arrival_Time_EST__c
 #if($matchedFlightLeg)
-$matchedFlightLeg.Est_Departure_Time_EST__c
+$matchedFlightLeg.Est_Arrival_Time_EST__c
 #end

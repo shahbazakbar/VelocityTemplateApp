@@ -1,11 +1,11 @@
 #set( $FlightLegsFromEarliest = $sorter.sort($Flight_Leg__cList,["est_Departure_Time_EST__c:asc"]) )
-#foreach($Flight_Leg__c in $FlightLegsFromEarliest )
+#foreach( Flight_Leg__c in $FlightLegsFromEarliest )
 #if(${Flight_Leg__c.Status__c}== "Booked")
-#set( $matchedFlightLeg = $Flight_Leg__c )
+#set( $matchedFlightLeg = $FlightLeg )
 #break
 #end
 #end
-##OutPut Est_Departure_Time_EST__c
+##OutPut To__c
 #if($matchedFlightLeg)
-$matchedFlightLeg.Est_Departure_Time_EST__c
+$matchedFlightLeg.To__c
 #end
